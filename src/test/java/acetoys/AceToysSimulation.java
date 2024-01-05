@@ -8,6 +8,8 @@ import acetoys.simulation.UserJourney;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 
+import java.util.Objects;
+
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
@@ -25,13 +27,13 @@ public class AceToysSimulation extends Simulation {
     .acceptLanguageHeader("en-GB,en;q=0.9");
 
   {
-      if (TEST_TYPE == "INSTANT_USERS") {
+      if (Objects.equals(TEST_TYPE, "INSTANT_USERS")) {
           setUp(TestPopulation.instantUsers).protocols(httpProtocol);
-      } else if (TEST_TYPE == "RAMP_USERS") {
+      } else if (Objects.equals(TEST_TYPE, "RAMP_USERS")) {
           setUp(TestPopulation.rampUsers).protocols(httpProtocol);
-      } else if (TEST_TYPE == "COMPLEX_INJECTION") {
+      } else if (Objects.equals(TEST_TYPE, "COMPLEX_INJECTION")) {
           setUp(TestPopulation.complexInjection).protocols(httpProtocol);
-      } else if (TEST_TYPE == "CLOSED_MODEL") {
+      } else if (Objects.equals(TEST_TYPE, "CLOSED_MODEL")) {
           setUp(TestPopulation.closedModel).protocols(httpProtocol);
       } else {
           setUp(TestPopulation.instantUsers).protocols(httpProtocol);
