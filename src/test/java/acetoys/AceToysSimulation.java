@@ -19,6 +19,7 @@ public class AceToysSimulation extends Simulation {
 
   private HttpProtocolBuilder httpProtocol = http
     .baseUrl("https://" + DOMAIN)
+    .proxy(Proxy("proxy.infet.ejpd.admin.ch", 8080))
     .inferHtmlResources(AllowList(), DenyList(".*\\.js", ".*\\.css", ".*\\.gif", ".*\\.jpeg", ".*\\.jpg", ".*\\.ico", ".*\\.woff", ".*\\.woff2", ".*\\.(t|o)tf", ".*\\.png", ".*detectportal\\.firefox\\.com.*"))
     .acceptEncodingHeader("gzip, deflate")
     .acceptLanguageHeader("en-GB,en;q=0.9");
